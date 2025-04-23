@@ -8,7 +8,7 @@ on:
 jobs:
   basic-checks:
     name: Run basic-checks
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set 
     # container: golang:1.14-buster
     steps:
 
@@ -30,7 +30,7 @@ jobs:
   integration-tests:
     name: Run integration-tests
     needs: basic-checks
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set 
     env:
       GOFLAGS: -buildvcs=false
     steps:
@@ -46,7 +46,7 @@ jobs:
   build:
     name: Build Pull Request Binaries
     needs: integration-tests
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
